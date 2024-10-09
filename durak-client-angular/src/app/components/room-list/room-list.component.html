@@ -1,0 +1,25 @@
+<div class="flex flex-col justify-start items-center w-96 max-h-full bg-tgsecback rounded-xl select-none">
+    <div class="flex flex-row w-80 justify-center items-center">
+        <div class="h-0.5 w-1/3 bg-tgsubtxt rounded-full"></div>
+        <div class="w-1/3 text-xl text-center">Room list</div>
+        <div class="h-0.5 w-1/3 bg-tgsubtxt rounded-full"></div>
+    </div>
+    <div class="mt-2 mb-5 w-11/12 flex flex-col gap-0 justify-start items-center rounded-xl divide-y-2 border-2 divide-gray-600 border-gray-600 overflow-x-hidden overflow-auto">
+        @for(room of rooms; track room.roomId) {
+            <div class="w-full h-24 min-h-24 flex flex-col gap-0 justify-center items-center animate-fadein">
+                <div class="w-full h-24 flex flex-row gap-0 justify-around items-center">
+                    <div class="w-1/3 flex flex-row gap-3 justify-center items-center"><fa-icon [icon]="faUserGroup"></fa-icon><div>{{room.playerCount}} / 2</div></div>
+                    <div class="w-1/3 flex flex-row gap-3 justify-center items-center"><div></div><fa-icon [icon]="faCoins"></fa-icon><div>{{room.bet}}</div></div>
+                    <div class="w-1/3 flex flex-row gap-3 justify-center items-center"><button class="h-10 w-24 text-lg bg-tgbut rounded-xl active:border-2 active:scale-[0.9] transition-all ease-in-out" (click)="joinRoom(room.connectionId)">Join</button></div>
+                </div>
+                <div class="w-full -mt-6 flex flex-row gap-3 justify-center items-center"><div class="text-tgsubtxt opacity-50 text-sm">{{room.roomId}}</div></div>
+            </div>
+        }
+    @empty {
+        <div class="w-full h-20 min-h-20 flex flex-col gap-0 justify-center items-center">
+            <div class="text-tgsubtxt text-lg">No rooms available</div>
+            <fa-icon class="text-tgsubtxt text-2xl animate-fadeinjelly" [icon]="faGhost"></fa-icon>
+        </div>
+    }
+    </div>
+</div>

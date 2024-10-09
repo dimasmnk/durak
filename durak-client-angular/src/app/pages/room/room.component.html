@@ -1,0 +1,225 @@
+<!-- <mat-toolbar color="primary" class="toolbar">
+  <mat-chip-listbox>
+    <mat-chip style="background-color: #212121;">
+      <fa-icon matChipAvatar [icon]="faCoins"></fa-icon>
+      <h1>{{ roomSettings.bet }}</h1>
+    </mat-chip>
+    @if(isGameStarted) {
+      <mat-chip style="background-color: #FB8C00;">
+        <fa-icon matChipAvatar [icon]="faCrown" style="color: #FFD438;"></fa-icon>
+        <h1 style="font-size: 30px;" [style.color]="getTrumpColor()">{{ getTrumpIcon() }}</h1>
+      </mat-chip>
+      <mat-chip style="background-color: #212121;">
+        <fa-icon matChipAvatar [icon]="faLayerGroup"></fa-icon>
+        <h1>{{ deckCardCount }}</h1>
+      </mat-chip>
+      @if(isMyTurn) {
+        <mat-chip style="background-color: #388E3C;">
+          <h1 style="font-size: 12px;">Your turn</h1>
+        </mat-chip>
+      }
+      @else {
+        <mat-chip style="background-color: #E57373;">
+          <h1 style="font-size: 12px; margin: 0;">Opponent's</h1>
+          <h1 style="font-size: 12px; margin-top: -20px">turn</h1>
+        </mat-chip>
+      }
+    }
+  </mat-chip-listbox>
+</mat-toolbar>
+
+@if(roomOpponent) {
+@if(!isGameStarted) {
+<div class="player-container">
+  <div class="avatar" [class]="roomOpponent.isReady ? 'readyStatus' : 'waitingStatus'">{{ roomOpponent.name[0] }}</div>
+</div>
+}
+
+@if(isGameStarted) {
+<div class="player-container">
+  <div class="avatar-pad" [class.avatar-pad-inactive]="!roomOpponent.isConnected">
+    <div class="avatar" [class]="gameOpponent.isWantToTake ? 'takeStatus' : gameOpponent.isPassed ? 'passedStatus' : 'idleStatus'">{{ roomOpponent.name[0] }}
+    </div>
+    <div
+      style="margin-left: 5px; display: flex; flex-direction: column; width: 40%; height: 100%; justify-content: center; gap: 10px;">
+      <div style="display: flex; flex-direction: row;"><fa-icon [size]="'lg'" [rotate]="90" [icon]="faRug"></fa-icon>
+        <h3 style="margin: 0;">{{gameOpponent.cardCount}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+@if(isMyTurn) {
+  <div class="attack-dropzone">
+    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+      @for(card of currentTurn.tableCards; track getCardId(card.attackCard)) {
+        @if(card.defendCard) {
+          <div style="max-height: 108px; max-width: 75px;">
+            <app-card [suit]="card.attackCard.suit" [rank]="card.attackCard.rank"></app-card>
+            <app-card class="defend-card" [suit]="card.defendCard.suit" [rank]="card.defendCard.rank"></app-card>
+          </div>
+        }
+        @else {
+          <app-card [suit]="card.attackCard.suit" [rank]="card.attackCard.rank"></app-card>
+        }
+      }
+    </div>
+  </div>
+}
+@else {
+  <div class="defend-zone">
+    <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+      @for(card of currentTurn.tableCards; track getCardId(card.attackCard)) {
+        @if(card.defendCard) {
+          <div style="max-height: 108px; max-width: 75px;">
+            <app-card [suit]="card.attackCard.suit" [rank]="card.attackCard.rank"></app-card>
+            <app-card class="defend-card" [suit]="card.defendCard.suit" [rank]="card.defendCard.rank"></app-card>
+          </div>
+        }
+        @else {
+          <div class="defend-dropzone smoother">
+            <app-card class="smoother" [suit]="card.attackCard.suit" [rank]="card.attackCard.rank" [attr.id]="$index"></app-card>
+        </div>
+        }
+      }
+    </div>
+  </div>
+}
+
+
+@for (card of cards; track getCardId(card)) {
+<app-card [class.draggable]="true" style="position: absolute; top: 80%; margin-left: -37px;"
+  [style.left.%]="((80 / cardCount) * $index) + (90 / cardCount / 2) + 10" [suit]="card.suit"
+  [rank]="card.rank" [attr.suit]="card.suit" [attr.rank]="card.rank"></app-card>
+}
+
+}
+
+@if(isGameStarted) {
+  <button mat-flat-button [hidden]="!isGameStarted" [disabled]="gameMe.isPassed || gameMe.isWantToTake || currentTurn.tableCards.length == 0 || (!isMyTurn && isAllCardsBeaten())" color="primary"
+  style="margin-top: 2em; width: 100%; height: 50px;" class="action-button" (click)="onActionClick()">{{ isMyTurn ? 'PASS' : 'TAKE'}}</button>
+}
+@else {
+  <button mat-flat-button [hidden]="isGameStarted" [disabled]="roomMe.isReady" color="primary"
+  style="margin-top: 2em; width: 100%; height: 50px;" class="action-button" (click)="setReady()">READY</button>
+}
+
+}
+@else {
+<div class="action-text">Waiting for opponent...</div>
+} -->
+
+<div class="w-full h-12 bg-tgsecback rounded-b-xl grid grid-cols-6 gap-2 p-2 select-none">
+  @if(isGameStarted) {
+    <div class="bg-tgbut items-center text-center rounded-xl grid grid-flow-col max-w-16">
+      <span class="-mr-1"><fa-icon [icon]="faCoins"></fa-icon></span>
+      <span class="text-lg">{{roomSettings.bet}}</span>
+    </div>
+    <div class="bg-tgbut text-center rounded-xl grid grid-flow-col items-center pl-1 max-w-16">
+      <span><fa-icon [icon]="faCrown"></fa-icon></span>
+      <span class="h-7 w-7 text-center">
+        <i class="text-xl" [ngClass]="trumpSuitIcon"></i>
+      </span>
+    </div>
+    <div class="bg-tgbut text-center rounded-xl grid grid-flow-col pl-1 pr-1 items-center max-w-16">
+      <span class="h-7 w-7 -mr-2">
+        <i class="bi-stack text-xl"></i>
+      </span>
+      <span class="text-lg">{{deckCardCount}}</span>
+    </div>
+    <div class="grid grid-cols-1 bg-tgbut text-center rounded-xl items-center col-span-3"><span>{{isMyTurn ? 'Your turn': "Opponent's turn"}}</span></div>
+  }
+  @else {
+    <div class="bg-tgbut items-center justify-center gap-3 text-center rounded-xl col-span-6 grid grid-flow-col">
+      <span class="-mr-1"><fa-icon [icon]="faCoins"></fa-icon></span>
+      <span class="text-lg">{{roomSettings.bet}}</span>
+    </div>
+  }
+</div>
+
+@if(!isGameStarted) {
+  @if(!roomOpponent) {
+    <div class="w-full h-[550px] flex flex-col justify-center items-center animate-fadein gap-6">
+      <div class="text-xl animate-pulse">Waiting for the opponent...</div>
+      <div><button class="w-80 h-10 text-lg bg-tgbut rounded-xl active:border-2 active:scale-[0.9] transition-all ease-in-out" (click)="onShareLinkClick()">Share room link</button></div>
+    </div>
+  }
+  @else {
+    <div class="w-full h-20 grid grid-flow-row place-items-center items-center justify-center">
+      <div class="relative inline-block h-16 w-16">
+        <div class="h-16 w-16 rounded-full ring-2 ring-tgtxt bg-tgsecback flex justify-center items-center text-tgtxt animate-fadein">
+          <div class="text-5xl">{{roomOpponent.name[0]}}</div>
+        </div>
+        @if(roomOpponent.isReady) {
+          <div class="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-tgbut border-2 border-tgtxt flex text-center items-center justify-center">
+            <fa-icon class="text-tgtxt" [icon]="faCheck"></fa-icon>
+          </div>
+        }
+      </div>
+    </div>
+  }
+}
+
+@if(isGameStarted) {
+  <div class="w-full h-20 grid grid-flow-row place-items-center items-center justify-center">
+    <div class="relative inline-block h-16 w-16">
+      <div class="h-16 w-16 rounded-full ring-2 ring-tgtxt bg-tgsecback flex justify-center items-center text-tgtxt animate-fadein" [ngClass]="roomOpponent.isConnected ? '' : 'bg-tgsubtxt'">
+        <div class="text-5xl">{{roomOpponent.name[0]}}</div>
+      </div>
+      @if(gameOpponent.isPassed && !gameOpponent.isWantToTake) {
+        <div class="absolute bottom-0.5 right-0.5 w-4 h-4 rounded-full bg-tgbut border-2 border-tgtxt flex text-center items-center justify-center">
+          <fa-icon class="text-tgtxt" [icon]="faCheck"></fa-icon>
+        </div>
+      }
+      @if(gameOpponent.isWantToTake) {
+        <div class="absolute bottom-0 -right-3 w-10 h-5 rounded-full bg-tgbut border-2 border-tgtxt flex text-center items-center justify-center">
+          <div>Take</div>
+        </div>
+      }
+    </div>
+  </div>
+
+  @if(isMyTurn) {
+    <div class="attack-dropzone">
+      <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        @for(card of currentTurn.tableCards; track getCardId(card.attackCard)) {
+          @if(card.defendCard) {
+            <div style="max-height: 108px; max-width: 75px;">
+              <app-card [suit]="card.attackCard.suit" [rank]="card.attackCard.rank"></app-card>
+              <app-card class="defend-card" [suit]="card.defendCard.suit" [rank]="card.defendCard.rank"></app-card>
+            </div>
+          }
+          @else {
+            <app-card [suit]="card.attackCard.suit" [rank]="card.attackCard.rank"></app-card>
+          }
+        }
+      </div>
+    </div>
+  }
+  @else {
+    <div class="defend-zone">
+      <div style="margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;">
+        @for(card of currentTurn.tableCards; track getCardId(card.attackCard)) {
+          @if(card.defendCard) {
+            <div style="max-height: 108px; max-width: 75px;">
+              <app-card [suit]="card.attackCard.suit" [rank]="card.attackCard.rank"></app-card>
+              <app-card class="defend-card" [suit]="card.defendCard.suit" [rank]="card.defendCard.rank"></app-card>
+            </div>
+          }
+          @else {
+            <div class="defend-dropzone smoother">
+              <app-card class="smoother" [suit]="card.attackCard.suit" [rank]="card.attackCard.rank" [attr.id]="$index"></app-card>
+          </div>
+          }
+        }
+      </div>
+    </div>
+  }
+  
+  
+  @for (card of cards; track getCardId(card)) {
+  <app-card [class.draggable]="true" style="position: absolute; top: 80%; margin-left: -37px;"
+    [style.left.%]="((80 / cardCount) * $index) + (90 / cardCount / 2) + 10" [suit]="card.suit"
+    [rank]="card.rank" [attr.suit]="card.suit" [attr.rank]="card.rank"></app-card>
+  }
+}

@@ -1,0 +1,31 @@
+<div class="flex justify-center items-center w-96 h-24 bg-tgsecback rounded-xl select-none">
+    <div class="w-11/12 h-20 flex items-center gap-4">
+        @if(tgService.tg.initData?.user?.photoUrl){
+            <img class="inline-block h-16 w-16 rounded-full ring-2 ring-tgtxt" [src]="tgService.tg.initData?.user?.photoUrl">
+        }
+        @else {
+            <div class="h-16 w-16 rounded-full ring-2 ring-tgtxt bg-tgsecback flex justify-center items-center text-tgtxt shadow-md shadow-tgbut" >
+                <div class="text-5xl">{{tgService.tg.initData?.user?.firstName?.[0]}}</div>
+            </div>
+        }
+        <div class="flex flex-col justify-center w-64 gap-2">
+            <div class="flex justify-between items-center">
+                <h1 class="text-tgtxt text-2xl">{{tgService.tg.initData?.user?.firstName}}</h1>
+                @if(user) {
+                    <div class="flex flex-row justify-center"><fa-icon class="text-yellow-500 mr-2" [icon]="faCoins"></fa-icon><div class="text-tgtxt text-lg">{{user.coinCount}}</div></div>
+                }
+                @else {
+                    <div class="flex flex-row justify-center"><fa-icon class="text-yellow-500 mr-2" [icon]="faCoins"></fa-icon><div class="w-10 h-5 rounded-md bg-gray-600 animate-pulse"></div></div>
+                }
+            </div>
+            @if(user) {
+                <div class="text-tgsubtxt text-sm">WINS: {{user.winCount}} • TOTAL: {{user.totalCount}}</div>
+            }
+            @else {
+                <div class="h-5 w-24 mt-2 rounded-md bg-gray-600 animate-pulse"></div>
+            }
+        </div>
+    </div>
+
+
+</div>

@@ -1,0 +1,15 @@
+@if(isLoaded){
+    <router-outlet></router-outlet>
+    <!-- <div class="flex flex-col justify-center items-center gap-10 w-full h-full">
+        <div class="flex justify-center items-center w-80" ><img src="./../assets/stickers/reconstruction.gif"></div>
+        <div class="text-sm text-left w-80">Attention Players: Our card game is currently disabled for maintenance and updates.
+            We're committed to providing you with the best experience and have temporarily disabled the game to ensure quality.
+            We apologize for any inconvenience caused and appreciate your understanding. We anticipate resuming normal service in several weeks.
+            Thank you for your patience.</div>
+    </div> -->
+}
+@else {
+    <div style="color: aliceblue;">Loading...</div>
+<button class="h-12 w-full select-none text-lg bg-white rounded-xl active:border-2 active:scale-[0.9] transition-all ease-in-out">Create Room</button>
+
+}

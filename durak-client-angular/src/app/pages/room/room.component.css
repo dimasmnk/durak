@@ -1,0 +1,57 @@
+.attack-dropzone {
+  width: 90%;
+  height: 300px;
+  position: absolute;
+  left: 5%;
+  top: 160px;
+  border-radius: 8%;
+  transition: all cubic-bezier(0,.6,.6,1) 0.3s;
+}
+
+.defend-zone {
+  width: 90%;
+  height: 300px;
+  position: absolute;
+  left: 5%;
+  top: 160px;
+  transition: all cubic-bezier(0,.6,.6,1) 0.3s;
+}
+
+.dropzone-active {
+  background-color: var(--tg-theme-button-color);
+}
+
+.zoom-in {
+  background-color: var(--tg-theme-button-color);
+  border: 2px dashed var(--tg-theme-button-color);
+  border-radius: 8%;
+  opacity: 0.5;
+}
+
+.draggable {
+  transition: all cubic-bezier(0,.6,.6,1) 0.3s;
+}
+
+.defend-dropzone {
+  height: 108px;
+  width: 75px;
+}
+
+.defend-dropzone-active {
+  background-color: var(--tg-theme-button-color);
+  border-radius: 3%;
+}
+
+.card-wrapper {
+  opacity: 0.5;
+}
+
+.smoother {
+  transition: all cubic-bezier(0,.6,.6,1) 0.3s;
+}
+
+.defend-card {
+  position: relative;
+  top: -90px;
+  left: 10px;
+}

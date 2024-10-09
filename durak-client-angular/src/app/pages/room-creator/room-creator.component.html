@@ -1,0 +1,49 @@
+<!-- <mat-toolbar color="primary" class="toolbar">
+    <h1>ROOM CREATION</h1>
+</mat-toolbar>
+
+<div style="margin-top: 2em; display: flex; flex-direction: column; align-items: center; justify-content: start; gap: 2em">
+    <span style="width: 80%; display: flex; flex-direction: column; align-items: center; justify-content: start;">
+        <h3 style="color: aliceblue;">BET</h3>
+        <mat-chip-listbox (change)="onChipSelect($event)">
+            <mat-chip-option selected>10</mat-chip-option>
+            <mat-chip-option>20</mat-chip-option>
+            <mat-chip-option>50</mat-chip-option>
+            <mat-chip-option>100</mat-chip-option>
+            <mat-chip-option>500</mat-chip-option>
+        </mat-chip-listbox>
+    </span>
+    <button mat-flat-button color="primary" style="margin-top: 2em; width: 80%; height: 50px;" (click)="createRoomAndJoin()">CREATE ROOM</button>
+</div>
+ -->
+ <div class="flex flex-col justify-center items-center w-full max-h-full bg-tgsecback rounded-xl select-none gap-6 mt-3">
+    <div class="flex flex-row w-80 justify-center items-center">
+        <div class="h-0.5 w-2/6 bg-tgsubtxt rounded-full"></div>
+        <div class="w-3/6 text-xl text-center">Room creator</div>
+        <div class="h-0.5 w-2/6 bg-tgsubtxt rounded-full"></div>
+    </div>
+
+    <fa-icon class="text-tgsubtxt text-9xl" [icon]="faKaaba"></fa-icon>
+
+    <div class="flex flex-col justify-start items-center w-96 max-h-full bg-tgsecback rounded-xl select-none">
+        <div class="text-xl">Bet</div>
+        <div class="grid w-full grid-cols-6 gap-2 rounded-xl p-2">
+            <div *ngFor="let bet of betOptions">
+                <input type="radio" name="bet" [id]="bet" [value]="bet" class="peer hidden" [(ngModel)]="selectedBet" />
+                <label [for]="bet" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-tgbut peer-checked:font-bold">{{ bet }}</label>
+            </div>
+        </div>    
+    </div>
+
+    <div class="flex flex-col justify-start items-center w-96 max-h-full bg-tgsecback rounded-xl select-none">
+        <div class="text-xl">Access</div>
+        <div class="grid w-full grid-cols-2 gap-2 rounded-xl p-2">
+            <div *ngFor="let access of accessOptions">
+                <input type="radio" name="access" [id]="access.value" [value]="access.value" class="peer hidden" [(ngModel)]="selectedAccess" />
+                <label [for]="access.value" class="block cursor-pointer select-none rounded-xl p-2 text-center peer-checked:bg-tgbut peer-checked:font-bold">{{ access.text }}</label>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="h-12 w-full select-none absolute bottom-0 left-0 text-lg bg-tgbut rounded-xl active:border-2 active:scale-[0.9] transition-all ease-in-out" (click)="onMainButtonClick()">Create Room And Join</button>

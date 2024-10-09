@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34316.72
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Durak.Server.API", "Durak.Server.API\Durak.Server.API.csproj", "{4A041C96-A626-46A1-BB4A-711946865EAC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Durak.Server.API.UnitTests", "Durak.Server.API.UnitTests\Durak.Server.API.UnitTests.csproj", "{93FC0B2B-5B56-498E-AC87-038D23B97EF4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CBC667EC-1834-43C8-8EF5-6246B2E6F333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Durak.Api", "src\Durak.Api\Durak.Api.csproj", "{47EFFA7D-869C-4ABA-B48E-C3AC162060BF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A041C96-A626-46A1-BB4A-711946865EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A041C96-A626-46A1-BB4A-711946865EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A041C96-A626-46A1-BB4A-711946865EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A041C96-A626-46A1-BB4A-711946865EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93FC0B2B-5B56-498E-AC87-038D23B97EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93FC0B2B-5B56-498E-AC87-038D23B97EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93FC0B2B-5B56-498E-AC87-038D23B97EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93FC0B2B-5B56-498E-AC87-038D23B97EF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47EFFA7D-869C-4ABA-B48E-C3AC162060BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47EFFA7D-869C-4ABA-B48E-C3AC162060BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47EFFA7D-869C-4ABA-B48E-C3AC162060BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47EFFA7D-869C-4ABA-B48E-C3AC162060BF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47EFFA7D-869C-4ABA-B48E-C3AC162060BF} = {CBC667EC-1834-43C8-8EF5-6246B2E6F333}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A705D352-0ED0-44D7-B778-801F61299845}
+	EndGlobalSection
+EndGlobal
