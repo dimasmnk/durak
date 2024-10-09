@@ -1,4 +1,4 @@
-#Durak Game Drafts
+# Durak Game Drafts
 
 Welcome to the Durak Game Drafts repository! This repository is a compilation of different draft versions and prototypes of the classic card game Durak, showcasing various stages of development and experimental features.
 
